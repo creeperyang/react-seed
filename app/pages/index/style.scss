@@ -1,0 +1,19 @@
+$break-small: 600px;
+$break-xsmall: 420px;
+
+.card {
+    width: 72%;
+    margin: 20px auto;
+    @media screen and (max-width: $break-small) {
+        width: 100%;
+    }
+}
+
+.memberList {
+    max-width: $break-xsmall;
+    margin: auto;
+}
+
+.actionZone {
+    text-align: center;
+}

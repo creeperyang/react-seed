@@ -1,0 +1,13 @@
+$break-small: 600px;
+$break-xsmall: 420px;
+
+.paper {
+    width: 72%;
+    margin: 20px auto;
+    padding: 20px 120px;
+
+    text-align: center;
+    @media screen and (max-width: $break-small) {
+        width: 100%;
+    }
+}
