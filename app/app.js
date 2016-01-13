@@ -50,7 +50,7 @@ const main = () => {
         }
     };
 
-    const app = new App({state: state});
+    const app = new App({ state: state });
 
     app.renderToDOM(document.getElementById('app'));
 };

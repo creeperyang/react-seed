@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 
 import AppBar from 'material-ui/lib/app-bar';
 import IconButton from 'material-ui/lib/icon-button';
@@ -33,7 +32,7 @@ class AppRoot extends React.Component {
     render() {
         return (
             <div>
-                {/*comment: public components*/}
+                {/* comment: public components */}
                 <AppBar
                     title="UED Team"
                     iconElementLeft={<Menu muiTheme={ this.state.muiTheme } />}
@@ -42,8 +41,8 @@ class AppRoot extends React.Component {
                             iconButtonElement={
                               <IconButton><MoreVertIcon /></IconButton>
                             }
-                            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+                            targetOrigin={{ horizontal: 'right', vertical: 'top' }}
+                            anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
                         >
                             <MenuItem primaryText="Refresh" />
                             <MenuItem primaryText="Help" />
@@ -52,7 +51,7 @@ class AppRoot extends React.Component {
                     }
                 />
 
-                {/*comment: child components*/}
+                {/* comment: child components */}
                 {this.props.children}
 
             </div>

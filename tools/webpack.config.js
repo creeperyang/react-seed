@@ -18,6 +18,9 @@ const config = {
     plugins: plugins,
     target: 'web',
     module: {
+        preLoaders: [
+            {test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/}
+        ],
         loaders: loaders
     },
     postcss: [autoprefixer],

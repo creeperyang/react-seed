@@ -20,7 +20,7 @@ class AboutPage extends Component {
         });
     };
 
-    render () {
+    render() {
         return (
             <div>
                 <Paper zDepth={2} className={styles.paper}>

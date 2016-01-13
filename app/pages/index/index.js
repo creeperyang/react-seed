@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import { Link } from 'react-router';
 
 import Card from 'material-ui/lib/card/card';
 import CardActions from 'material-ui/lib/card/card-actions';
@@ -45,29 +44,29 @@ class IndexPage extends Component {
 
     render() {
         const members = [{
-            name: 'Jump',
+            name: 'Bobo',
             level: 5,
-            email: 'jump@demo.com'
+            email: 'bobo@demo.com'
         }, {
-            name: '小胖',
+            name: 'chunxia',
             level: 4,
-            email: 'pang@demo.com'
+            email: 'cx@demo.com'
         }, {
             name: 'creeper',
             level: 4,
             email: 'cp@demo.com'
         }, {
-            name: '李长庆',
+            name: 'kun',
             level: 4,
-            email: 'changqingli@demo.com'
+            email: 'kun@demo.com'
         }, {
-            name: '张小凡',
+            name: 'yifan',
             level: 4,
             email: 'xiaofanzhang@demo.com'
         }, {
-            name: 'Benjamin',
+            name: 'wenb',
             level: 4,
-            email: 'Benjamin@demo.com'
+            email: 'wenb@demo.com'
         }];
         const [leader] = members;
         return (
@@ -80,7 +79,7 @@ class IndexPage extends Component {
                 <CardText expandable={true}>
                     <div className={styles.memberList}>
                         <List subheader="Leader">
-                            <ListItem 
+                            <ListItem
                                 primaryText={leader.name}
                                 secondaryText={leader.email}
                                 rightIcon={<ActionInfo />}
@@ -89,12 +88,12 @@ class IndexPage extends Component {
                         <Divider />
                         <List subheader="Members">
                             {members.map((member, i) => {
-                                return (<ListItem 
+                                return (<ListItem
                                     key={'member' + i}
                                     primaryText={member.name}
                                     secondaryText={member.email}
                                     rightIcon={<ActionInfo />}
-                                    leftAvatar={<Avatar>{member.name[0].toUpperCase()}</Avatar>} />)
+                                    leftAvatar={<Avatar>{member.name[0].toUpperCase()}</Avatar>} />);
                             })}
                         </List>
                     </div>

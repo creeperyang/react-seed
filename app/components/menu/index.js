@@ -13,7 +13,7 @@ import logo from './logo.png';
 export default class Menu extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             open: false,
             muiTheme: (this.context && this.context.muiTheme) ? this.context.muiTheme : this.props.muiTheme
         };
@@ -42,7 +42,7 @@ export default class Menu extends Component {
                     docked={false}
                     width={200}
                     open={this.state.open}
-                    onRequestChange={open => this.setState({open})}
+                    onRequestChange={open => this.setState({ open })}
                 >
                     <h2 className={styles.title}><ImportantDevice /> UED</h2>
                     <MenuItem onTouchTap={this.handleClose}><Link className={styles.link} to="/">Home</Link></MenuItem>
