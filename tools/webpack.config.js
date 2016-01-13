@@ -15,7 +15,7 @@ const config = {
     },
     output: {
         path: BUILD_PATH,
-        filename: 'script/[name].[hash].js',
+        filename: 'script/[name].[hash:5].js',
         chunkFilename: "script/[id].bundle.js"
     },
     plugins: plugins,

@@ -9,7 +9,6 @@ import NoMatch from './pages/noMatch';
 
 class AppRoutes extends Component {
     render() {
-        console.log(this.props.state);
         return (
             <Router history={createBrowserHistory()}>
                 <Route path="/" component={AppRoot}>
