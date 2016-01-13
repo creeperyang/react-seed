@@ -1,5 +1,5 @@
 import { resolve, join } from 'path';
-import autoprefixer from 'autoprefixer-core';
+import autoprefixer from 'autoprefixer';
 import webpack from 'webpack';
 import { plugins, loaders } from './webpack.loadersAndPlugins';
 import { DEBUG, HOST, PORT, APP_PATH, BUILD_PATH, BUILD_SCRIPT_DIR } from '../config';
@@ -23,7 +23,7 @@ const config = {
         ],
         loaders: loaders
     },
-    postcss: [autoprefixer],
+    postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
     devServer: {
         contentBase: BUILD_PATH,
         hot: true,
