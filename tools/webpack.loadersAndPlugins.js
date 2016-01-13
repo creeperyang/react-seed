@@ -1,24 +1,19 @@
-import webpack from 'webpack';
 import { resolve, join } from 'path';
+import webpack from 'webpack';
 import HtmlwebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-
-const DEBUG = process.env.NODE_ENV === 'development';
-
-const ROOT_PATH = process.cwd();
-const APP_PATH = resolve(ROOT_PATH, 'app');
-const BUILD_PATH = resolve(ROOT_PATH, 'build');
+import { DEBUG, DOMAIN, PORT, APP_PATH, BUILD_SCRIPT_DIR, BUILD_STYLE_DIR, BUILD_RES_DIR, BUILD_IMAGE_DIR, NODE_MODULES_PATH } from '../config';
 
 ///
 /// loaders
 ///
-let sassLoader, cssLoader, jsLoader;
+let sassLoader, cssLoader, jsLoader, imgLoader;
 
 /// ----style loaders---
 const sassParams = [
     'outputStyle=expanded',
-    'includePaths[]=' + resolve(ROOT_PATH, 'app/style'),
-    'includePaths[]=' + resolve(ROOT_PATH, 'node_modules')
+    'includePaths[]=' + APP_PATH,
+    'includePaths[]=' + NODE_MODULES_PATH
 ];
 if (DEBUG) {
     sassParams.push('sourceMap', 'sourceMapContents=true');
@@ -48,6 +43,9 @@ if (DEBUG) {
 /// ----js loader---
 jsLoader = ['babel?presets[]=react,presets[]=es2015,presets[]=stage-0'].join('!');
 
+/// ----file loader----
+imgLoader = [`url-loader?name=${BUILD_IMAGE_DIR + '/'}[name].[ext]&limit=1024`].join('!');
+
 const loaders = [
         {
             test: /\.css$/,
@@ -62,8 +60,23 @@ const loaders = [
             test: /\.scss$/,
             loader: sassLoader
         }, {
-            test: /\.jpe?g$|\.gif$|\.png$|\.ico|\.svg$|\.woff$|\.ttf$/,
-            loader: 'file-loader?name=[path][name].[ext]'
+            test: /\.woff$/, 
+            loader: `url?name=${BUILD_RES_DIR + '/'}[name].[ext]&limit=10000&mimetype=application/font-woff`
+        }, {
+            test: /\.woff2$/,
+            loader: `url?name=${BUILD_RES_DIR + '/'}[name].[ext]&limit=10000&mimetype=application/font-woff`
+        }, { 
+            test: /\.ttf$/,
+            loader: `url?name=${BUILD_RES_DIR + '/'}[name].[ext]&limit=10000&mimetype=application/octet-stream`
+        }, {
+            test: /\.eot$/,
+            loader: `file?name=${BUILD_RES_DIR + '/'}[name].[ext]`
+        }, {
+            test: /\.svg$/,
+            loader: `url?name=${BUILD_RES_DIR + '/'}[name].[ext]&limit=10000&mimetype=image/svg+xml`
+        }, {
+            test: /\.jpe?g$|\.gif$|\.png$|\.ico$/,
+            loader: imgLoader
         }
     ];
 
@@ -72,8 +85,10 @@ const loaders = [
 ///
 
 // extracted css file name
-const cssBundle = join('css', '[name].[hash:5].css');
+const cssBundle = join(BUILD_STYLE_DIR, '[name].[hash:5].css');
 const plugins = [
+        new webpack.optimize.UglifyJsPlugin({minimize: true}),
+        new webpack.optimize.CommonsChunkPlugin('vendors', join(BUILD_SCRIPT_DIR, 'vendors.js')),
         new HtmlwebpackPlugin({
             title: 'Demo',
             filename: 'index.html',

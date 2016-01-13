@@ -1,23 +1,20 @@
-import webpack from 'webpack';
 import { resolve, join } from 'path';
-import { plugins, loaders } from './webpack.loadersAndPlugins';
 import autoprefixer from 'autoprefixer-core';
-
-const DEBUG = process.env.NODE_ENV === 'development';
-
-const ROOT_PATH = process.cwd();
-const APP_PATH = resolve(ROOT_PATH, 'app');
-const BUILD_PATH = resolve(ROOT_PATH, 'build');
+import webpack from 'webpack';
+import { plugins, loaders } from './webpack.loadersAndPlugins';
+import { DEBUG, DOMAIN, PORT, APP_PATH, BUILD_PATH, BUILD_SCRIPT_DIR } from '../config';
 
 const config = {
     entry: {
-        app: ['webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server', resolve(APP_PATH, 'app.js')]
+        app: DEBUG ? [`webpack-dev-server/client?http://${DOMAIN}:${PORT}`, 'webpack/hot/dev-server', resolve(APP_PATH, 'app.js')] : resolve(APP_PATH, 'app.js'),
+        vendors: ['react', 'react-dom', 'react-router']
     },
     output: {
         path: BUILD_PATH,
-        filename: 'script/[name].[hash:5].js',
-        chunkFilename: "script/[id].bundle.js"
+        filename: `${BUILD_SCRIPT_DIR ? BUILD_SCRIPT_DIR : '.'}/[name].[hash:5].js`,
+        chunkFilename: `${BUILD_SCRIPT_DIR ? BUILD_SCRIPT_DIR : '.'}script/[id].bundle.js`
     },
+    devtool: DEBUG ? 'eval-source-map' : false,
     plugins: plugins,
     target: 'web',
     module: {
