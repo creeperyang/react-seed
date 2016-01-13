@@ -2,11 +2,11 @@ import { resolve, join } from 'path';
 import autoprefixer from 'autoprefixer-core';
 import webpack from 'webpack';
 import { plugins, loaders } from './webpack.loadersAndPlugins';
-import { DEBUG, DOMAIN, PORT, APP_PATH, BUILD_PATH, BUILD_SCRIPT_DIR } from '../config';
+import { DEBUG, HOST, PORT, APP_PATH, BUILD_PATH, BUILD_SCRIPT_DIR } from '../config';
 
 const config = {
     entry: {
-        app: DEBUG ? [`webpack-dev-server/client?http://${DOMAIN}:${PORT}`, 'webpack/hot/dev-server', resolve(APP_PATH, 'app.js')] : resolve(APP_PATH, 'app.js'),
+        app: DEBUG ? [`webpack-dev-server/client?http://${HOST}:${PORT}`, 'webpack/hot/dev-server', resolve(APP_PATH, 'app.js')] : resolve(APP_PATH, 'app.js'),
         vendors: ['react', 'react-dom', 'react-router']
     },
     output: {

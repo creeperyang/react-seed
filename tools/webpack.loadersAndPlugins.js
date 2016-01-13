@@ -2,7 +2,7 @@ import { resolve, join } from 'path';
 import webpack from 'webpack';
 import HtmlwebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import { DEBUG, DOMAIN, PORT, APP_PATH, BUILD_SCRIPT_DIR, BUILD_STYLE_DIR, BUILD_RES_DIR, BUILD_IMAGE_DIR, NODE_MODULES_PATH } from '../config';
+import { DEBUG, APP_PATH, BUILD_SCRIPT_DIR, BUILD_STYLE_DIR, BUILD_RES_DIR, BUILD_IMAGE_DIR, NODE_MODULES_PATH } from '../config';
 
 ///
 /// loaders

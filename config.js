@@ -4,7 +4,7 @@ import { resolve } from 'path';
 const DEBUG = process.env.NODE_ENV === 'development';
 
 /// dev server
-const DOMAIN = 'localhost';
+const HOST = 'localhost';
 const PORT = 3000;
 
 /// app and build setting
@@ -20,4 +20,4 @@ const BUILD_IMAGE_DIR = 'images';
 const BUILD_RES_DIR = 'res';
 
 
-export { DEBUG, DOMAIN, PORT, APP_PATH, BUILD_PATH, BUILD_SCRIPT_DIR, BUILD_IMAGE_DIR, BUILD_STYLE_DIR, BUILD_RES_DIR };
+export { DEBUG, HOST, PORT, APP_PATH, BUILD_PATH, BUILD_SCRIPT_DIR, BUILD_IMAGE_DIR, BUILD_STYLE_DIR, BUILD_RES_DIR };
