@@ -33,6 +33,9 @@ class IndexPage extends Component {
         };
     };
 
+    static propTypes = {
+        route: PropTypes.object
+    };
     static childContextTypes = {
         muiTheme: PropTypes.object
     };
@@ -43,31 +46,7 @@ class IndexPage extends Component {
     };
 
     render() {
-        const members = [{
-            name: 'Bobo',
-            level: 5,
-            email: 'bobo@demo.com'
-        }, {
-            name: 'chunxia',
-            level: 4,
-            email: 'cx@demo.com'
-        }, {
-            name: 'creeper',
-            level: 4,
-            email: 'cp@demo.com'
-        }, {
-            name: 'kun',
-            level: 4,
-            email: 'kun@demo.com'
-        }, {
-            name: 'yifan',
-            level: 4,
-            email: 'xiaofanzhang@demo.com'
-        }, {
-            name: 'wenb',
-            level: 4,
-            email: 'wenb@demo.com'
-        }];
+        const { members } = this.props.route;
         const [leader] = members;
         return (
             <Card initiallyExpanded={true} className={styles.card}>

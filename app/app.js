@@ -43,13 +43,32 @@ const main = () => {
     injectTapEventPlugin();
 
     const state = {
-        user: {
-            name: 'King of the world',
-            age: 25,
-            location: 'Shanghai'
-        }
+        members: [{
+            name: 'Bobo',
+            level: 5,
+            email: 'bobo@demo.com'
+        }, {
+            name: 'chunxia',
+            level: 4,
+            email: 'cx@demo.com'
+        }, {
+            name: 'creeper',
+            level: 4,
+            email: 'cp@demo.com'
+        }, {
+            name: 'kun',
+            level: 4,
+            email: 'kun@demo.com'
+        }, {
+            name: 'yifan',
+            level: 4,
+            email: 'xiaofanzhang@demo.com'
+        }, {
+            name: 'wenb',
+            level: 4,
+            email: 'wenb@demo.com'
+        }]
     };
-
     const app = new App({ state });
 
     app.renderToDOM(document.getElementById('app'));
