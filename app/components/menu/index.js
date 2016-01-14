@@ -19,6 +19,9 @@ export default class Menu extends Component {
         };
     };
 
+    static propTypes = {
+        muiTheme: PropTypes.object
+    };
     static contextTypes = {
         muiTheme: PropTypes.object.isRequired
     };
@@ -28,7 +31,6 @@ export default class Menu extends Component {
     handleClose = () => this.setState({ open: false });
 
     render() {
-
         let themeVariables = this.state.muiTheme.appBar;
         let iconStyle = {
             fill: themeVariables.textColor,

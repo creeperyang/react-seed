@@ -19,7 +19,9 @@ class AppRoot extends React.Component {
             muiTheme: ThemeManager.getMuiTheme(DefaultRawTheme)
         };
     };
-
+    static propTypes = {
+        children: PropTypes.object
+    };
     static childContextTypes = {
         muiTheme: PropTypes.object
     };
@@ -50,10 +52,8 @@ class AppRoot extends React.Component {
                         </IconMenu>
                     }
                 />
-
                 {/* comment: child components */}
-                {this.props.children}
-
+                { this.props.children }
             </div>
         );
     }
