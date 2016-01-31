@@ -1,17 +1,15 @@
 import React, { PropTypes, Component } from 'react';
 
-import Carousel from 'nuka-carousel';
 import Slider from '../../components/slider';
 // styles
 import styles from './style.scss';
-
 
 class IndexPage extends Component {
     constructor() {
         super();
 
         this.state = {
-            images: ['http://images3.c-ctrip.com/rk/201312/1920x360b.jpg', 
+            images: ['http://images3.c-ctrip.com/rk/201312/1920x360b.jpg',
                 'http://images3.ctrip.com/destinationad/201601/yl1920_360a.jpg',
                 'http://images3.ctrip.com/rk/201511/rh1920.jpg',
                 'http://images3.c-ctrip.com/rk/201601/mlh1920.jpg'],
@@ -87,13 +85,62 @@ class IndexPage extends Component {
         return (
             <div>
                 <div className={styles.topWrap}>
-                    {
-                        <Slider animation={'translate'} speed={400} autoplayDuration={4000}>
-                            <div className={styles.slideItem}>Slide1</div>
-                            <div className={styles.slideItem}>Slide2</div>
-                            <div ref='indicator' className={styles.slideItem}>Slide3</div>
-                        </Slider>
-                    }
+                    <Slider speed={400} autoplay={false}>
+                        <div className={styles.slideItem}>Slide1</div>
+                        <div className={styles.slideItem}>Slide2</div>
+                        <div ref="indicator" className={styles.slideItem}>Slide3</div>
+                    </Slider>
+                </div>
+                <div className={styles.mainWrap}>
+                    <aside className={styles.side}>
+                        <ul className={styles.service}>
+                            <li className={styles.serviceFree}>
+                                <a target="_blank" href={this.state.service.free.link}>
+                                    <img src={this.state.service.free.image}/>
+                                </a>
+                            </li>
+                            <li className={styles.serviceMap}>
+                                <a href={this.state.service.map.link} target="_blank">
+                                    <b></b>
+                                    <strong>全世界机票 全信赖携程</strong>
+                                    <br/>国际机票超值优惠
+                                </a>
+                            </li>
+                        </ul>
+
+                        <div className={styles.toolbox}>
+                            <h3 className={styles.indexTitle}>{this.state.toolbox.title}</h3>
+                            <div className={styles.tools}>
+                                {
+                                    this.state.toolbox.tools.map((tool, index) => (
+                                        <a key={index} target="_blank" href={tool.link} className={tool.className}></a>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </aside>
+                    <main className={styles.main}>
+                        <div className={styles.hotTheme}>
+                            <h3 className={styles.indexTitle}>{this.state.hotTheme.title}</h3>
+                            <ul className={styles.topicList + ' clearfix'}>
+                                {
+                                    this.state.hotTheme.themes.map((theme, index) => (
+                                        <li key={index} className={index > 4 ? 'hide_on_small' : ''}>
+                                            <a target="_blank" href={theme.link} className={styles.topicItem}>
+                                                <img src={theme.image} />
+                                                <i className={styles.topicAbroad}></i>
+                                                <em className={styles.nameBg}></em>
+                                                <span className={styles.name}>{theme.title}</span>
+                                            </a>
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
+                        <div className={styles.roundAirline}>
+                            <h3 className={styles.indexTitle}>{this.state.roundAirline.title}</h3>
+                        </div>
+                    </main>
                 </div>
             </div>
         );

@@ -22,7 +22,7 @@ class Slider extends Component {
         indicators: PropTypes.bool, // whether to show dots
         direction: PropTypes.oneOf(['left', 'right']),
         current: PropTypes.number,
-        percentToSlide: PropTypes.number // (0-1),  
+        percentToSlide: PropTypes.number// (0-1)
     };
 
     static defaultProps = {
@@ -67,7 +67,7 @@ class Slider extends Component {
         return {
             width: count ? count + '00%' : '100%',
             left: this.state.current ? -this.state.current + '00%' : 0
-        }
+        };
     };
 
     getChildStyle(index) {
@@ -161,20 +161,20 @@ class Slider extends Component {
     render() {
         return (
             <div className={styles.container}>
-                <ul ref='wrapper' className={styles.wrapper} style={this.getStyle()} onMouseDown={this.handleMouseDown.bind(this)} onMouseMove={this.handleMouseMove.bind(this)} onMouseUp={this.handleMouseUp.bind(this)}>
+                <ul ref="wrapper" className={styles.wrapper} style={this.getStyle()} onMouseDown={this.handleMouseDown.bind(this)} onMouseMove={this.handleMouseMove.bind(this)} onMouseUp={this.handleMouseUp.bind(this)}>
                     { this.props.children.map((child, index) => (
                         <li key={index} className={styles.slide} style={this.getChildStyle(index)}>{child}</li>
                     ))}
                 </ul>
                 {
                     this.props.arrows ? [
-                        <span key='arrow0' onClick={this.handleArrowClick.bind(this, -1)} className={[styles.arrow, styles.prev].join(' ')} ref='prevArrow' disabled={this.state.current === 0}>prev</span>, 
-                        <span key='arrow1' onClick={this.handleArrowClick.bind(this, 1)} className={[styles.arrow, styles.next].join(' ')} ref='nextArrow' disabled={this.state.current === this.props.children.length - 1}>next</span>
+                        <span key="arrow0" onClick={this.handleArrowClick.bind(this, -1)} className={[styles.arrow, styles.prev].join(' ')} ref="prevArrow" disabled={this.state.current === 0}>prev</span>,
+                        <span key="arrow1" onClick={this.handleArrowClick.bind(this, 1)} className={[styles.arrow, styles.next].join(' ')} ref="nextArrow" disabled={this.state.current === this.props.children.length - 1}>next</span>
                     ] : null
                 }
                 {
                     this.props.indicators ? (
-                        <div ref='indicatorWrapper' className={styles.indicatorWrapper}>
+                        <div ref="indicatorWrapper" className={styles.indicatorWrapper}>
                             { this.props.children.map((child, index) => (
                                 <span key={index} className={styles.indicator + ( index === this.state.current ? ' ' + styles.active : '')}></span>
                             ))}

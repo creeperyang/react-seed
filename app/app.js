@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactDOMServer from 'react-dom/server';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import AppRoutes from './routes.js';
 import './styles/app.scss';
 
