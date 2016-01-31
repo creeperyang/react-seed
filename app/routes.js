@@ -16,7 +16,7 @@ class AppRoutes extends Component {
         return (
             <Router history={createBrowserHistory()}>
                 <Route path="/" component={AppRoot}>
-                    <IndexRoute members={this.props.state.members} component={IndexPage}/>
+                    <IndexRoute component={IndexPage}/>
                     <Route path="about" component={AboutPage} />
                     <Route path="*" component={NoMatch} />
                 </Route>

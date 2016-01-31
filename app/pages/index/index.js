@@ -1,25 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 
-import Card from 'material-ui/lib/card/card';
-import CardActions from 'material-ui/lib/card/card-actions';
-import CardHeader from 'material-ui/lib/card/card-header';
-import FlatButton from 'material-ui/lib/flat-button';
-import CardText from 'material-ui/lib/card/card-text';
-
-import Avatar from 'material-ui/lib/avatar';
-import List from 'material-ui/lib/lists/list';
-import ListItem from 'material-ui/lib/lists/list-item';
-import Divider from 'material-ui/lib/divider';
-import CommunicationChatBubble from 'material-ui/lib/svg-icons/communication/chat-bubble';
-import ActionInfo from 'material-ui/lib/svg-icons/action/info';
-import GroupWork from 'material-ui/lib/svg-icons/action/group-work';
-import IconButton from 'material-ui/lib/icon-button';
-import Colors from 'material-ui/lib/styles/colors';
-
-// theme
-import DefaultRawTheme from 'material-ui/lib/styles/raw-themes/light-raw-theme';
-import ThemeManager from 'material-ui/lib/styles/theme-manager';
-
+import Carousel from 'nuka-carousel';
+import Slider from '../../components/slider';
 // styles
 import styles from './style.scss';
 
@@ -29,60 +11,91 @@ class IndexPage extends Component {
         super();
 
         this.state = {
-            muiTheme: ThemeManager.getMuiTheme(DefaultRawTheme)
-        };
-    };
+            images: ['http://images3.c-ctrip.com/rk/201312/1920x360b.jpg', 
+                'http://images3.ctrip.com/destinationad/201601/yl1920_360a.jpg',
+                'http://images3.ctrip.com/rk/201511/rh1920.jpg',
+                'http://images3.c-ctrip.com/rk/201601/mlh1920.jpg'],
+            service: {
+                free: {
+                    link: 'http://pages.ctrip.com/commerce/promote/201512/flight/1212/zd/index.html',
+                    image: 'http://pages.ctrip.com/flight/banners/winter12.jpg'
+                },
+                map: {
+                    link: 'http://events.flights.ctrip.com/intlflight/youyoudongnanya.html#ctm_ref=fli_hp_pref_def_i_1',
 
-    static propTypes = {
-        route: PropTypes.object
-    };
-    static childContextTypes = {
-        muiTheme: PropTypes.object
-    };
-    getChildContext() {
-        return {
-            muiTheme: this.state.muiTheme
+                }
+            },
+            toolbox: {
+                title: '机票工具箱',
+                tools: [{
+                    className: styles.order,
+                    link: 'FlightQuery.aspx#ctm_ref=fli_hp_tool_def_i_1'
+                }, {
+                    className: styles.checkin,
+                    link: 'http://flights.ctrip.com/domestic/MyToolBox/BookSeatDemo.aspx?param=2#ctm_ref=fli_hp_tool_def_i_1'
+                }, {
+                    className: styles.refund,
+                    link: 'http://my.ctrip.com/Home/Order/FlightOrderList.aspx#ctm_ref=fli_hp_tool_def_i_1'
+                }, {
+                    className: styles.strategy,
+                    link: 'http://flights.ctrip.com/booking/airport-guides.html#ctm_ref=fli_hp_tool_def_i_1'
+                }]
+            },
+            hotTheme: {
+                title: '热门主题',
+                themes: [{
+                    title: '出行保障',
+                    image: 'http://pic.c-ctrip.com/fltinternational100913/topic/abroad.jpg',
+                    link: 'http://pages.ctrip.com/commerce/promote/201512/flight/lyx/index.html#ctm_ref=fli_hp_pt_def_i_1'
+                }, {
+                    title: '热门免签地',
+                    image: 'http://pic.c-ctrip.com/fltinternational100913/topic/beach.jpg',
+                    link: 'http://pages.ctrip.com/commerce/promote/201511/flight/sdmqd/index.html#ctm_ref=fli_hp_pt_def_i_2'
+                }, {
+                    title: '国航专享月',
+                    image: 'http://pic.c-ctrip.com/fltinternational100913/topic/ctrip.jpg',
+                    link: 'http://pages.ctrip.com/commerce/promote/201601/flight/gh/index.html#ctm_ref=fli_hp_pt_def_i_3'
+                }, {
+                    title: '低成本航空',
+                    image: 'http://pic.c-ctrip.com/fltinternational100913/topic/lowprice.jpg',
+                    link: 'http://pages.ctrip.com/commerce/promote/201512/flight/dcb/index.html#ctm_ref=fli_hp_pt_def_i_4'
+                }, {
+                    title: '东南亚特惠',
+                    image: 'http://pic.c-ctrip.com/fltinternational100913/topic/se_asia.jpg',
+                    link: 'http://pages.ctrip.com/commerce/promote/201511/flight/yx/index.html#ctm_ref=fli_hp_pt_def_i_5'
+                }, {
+                    title: '港澳台特惠',
+                    image: 'http://pic.c-ctrip.com/fltinternational100913/topic/hkmotw.jpg',
+                    link: 'http://pages.ctrip.com/commerce/promote/201512/flight/gat/index.html#ctm_ref=fli_hp_pt_def_i_6'
+                }, {
+                    title: '东南亚特惠',
+                    image: 'http://pic.c-ctrip.com/fltinternational100913/topic/jpkr.jpg',
+                    link: 'http://pages.ctrip.com/commerce/promote/201511/flight/rh/index.html#ctm_ref=fli_hp_pt_def_i_7'
+                }]
+            },
+            roundAirline: {
+                title: '往返特惠航线'
+
+            },
+            singleAirline: {
+                title: '单程特价航线'
+            }
         };
     };
 
     render() {
-        const { members } = this.props.route;
-        const [leader] = members;
         return (
-            <Card initiallyExpanded={true} className={styles.card}>
-                <CardHeader
-                    title="The Team"
-                    subtitle="ued/fe"
-                    actAsExpander={true}
-                    showExpandableButton={true} />
-                <CardText expandable={true}>
-                    <div className={styles.memberList}>
-                        <List subheader="Leader">
-                            <ListItem
-                                primaryText={leader.name}
-                                secondaryText={leader.email}
-                                rightIcon={<ActionInfo />}
-                                leftAvatar={<Avatar>{leader.name[0].toUpperCase()}</Avatar>} />
-                        </List>
-                        <Divider />
-                        <List subheader="Members">
-                            {members.map((member, i) => {
-                                return (<ListItem
-                                    key={'member' + i}
-                                    primaryText={member.name}
-                                    secondaryText={member.email}
-                                    rightIcon={<ActionInfo />}
-                                    leftAvatar={<Avatar>{member.name[0].toUpperCase()}</Avatar>} />);
-                            })}
-                        </List>
-                    </div>
-                </CardText>
-                <CardActions expandable={true} className={styles.actionZone}>
-                    <IconButton tooltip="join us!" touch={true} tooltipPosition="top-center">
-                        <GroupWork color={Colors.red500} />
-                    </IconButton>
-                </CardActions>
-            </Card>
+            <div>
+                <div className={styles.topWrap}>
+                    {
+                        <Slider animation={'translate'} speed={400} autoplayDuration={4000}>
+                            <div className={styles.slideItem}>Slide1</div>
+                            <div className={styles.slideItem}>Slide2</div>
+                            <div ref='indicator' className={styles.slideItem}>Slide3</div>
+                        </Slider>
+                    }
+                </div>
+            </div>
         );
     }
 }

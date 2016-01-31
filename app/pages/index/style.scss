@@ -1,19 +1,229 @@
-$break-small: 600px;
-$break-xsmall: 420px;
+////======
+.topWrap {
+    margin-bottom: 20px;
+    min-width: 980px;
+    height: 370px;
+}
+// topbar image carousel
+.wrap {
+    width: 100%;
+    overflow: hidden;
+}
+.image {
+    position: relative;
+    left: 50%;
+    width: 1920px;
+    height: 360px;
+    margin-left: -960px;
+}
 
-.card {
-    width: 72%;
-    margin: 20px auto;
-    @media screen and (max-width: $break-small) {
-        width: 100%;
+////==========
+.mainWrap {
+    margin: 0 auto;
+    padding: 0 10px;
+    min-width: 980px;
+    max-width: 1180px;
+}
+// left side
+.side {
+    float: left;
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 380px;
+}
+// service
+.service {
+    list-style: none;
+    li {
+        margin-bottom: 18px;
+        border-top-width: 4px;
+        border-top-style: solid;
+        background-position: 0 4px;
+    }
+    a {
+        display: block;
+        padding-left: 88px;
+        height: 64px;
+        border: 1px solid #cacaca;
+        border-top: 0 none;
+        background-color: transparent;
+        color: #888;
+        line-height: 12px;
+        cursor: pointer;
+        strong {
+            color: #5B657E;
+            font-weight: normal;
+            font-size: 18px;
+            font-family: 'Hiragino Sans GB', "Microsoft Yahei";
+            line-height: 38px;
+        }
+    }
+    b {
+        float: left;
+        overflow: hidden;
+        margin-top: 6px;
+        margin-left: -64px;
+        width: 64px;
+        height: 50px;
+    }
+    .serviceFree {
+        border-top: 0;
+    }
+}
+.serviceFree {
+    a {
+        height: auto;
+        padding: 0;
+        overflow: hidden;
+        border: 0;
+        background: white;
+    }
+}
+.serviceMap {
+    border-top-color: #4080DA;
+    a {
+        background-position: 326px -148px;
+    }
+    b {
+        margin-left: -68px;
+        background-position: -96px -194px;
+    }
+}
+// toolbox
+.toolbox {
+    margin-top: 20px;
+}
+.indexTitle {
+    margin-bottom: 10px;
+    font-weight: normal;
+    font-size: 18px;
+    font-family: 'Hiragino Sans GB', "Microsoft Yahei", Tahoma, Arial, \5b8b\4f53, sans-serif;
+    line-height: 18px;
+}
+.tools {
+    overflow: hidden;
+    border: 1px solid #ddd;
+    a {
+        float: left;
+        width: 94px;
+        height: 86px;
+        border-right: 1px solid #DCDCDC;
+    }
+    .order {
+        background-position: 1px -255px;
+    }
+    .checkin {
+        background-position: -189px -255px;
+    }
+    .refund {
+        background-position: -480px -255px;
+    }
+    .strategy {
+        width: 93px;
+        border: 0 none;
+        background-position: -378px -255px;
     }
 }
 
-.memberList {
-    max-width: $break-xsmall;
-    margin: auto;
+// main
+.main {
+    float: left;
+    width: 780px;
+    margin-top: -8px;
 }
-
-.actionZone {
+.hotTheme {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.topicList {
+    margin-left: -1px;
+    li {
+        position: relative;
+        float: left;
+        width: 110px;
+        overflow: hidden;
+        border-left: 1px solid #fff;
+    }
+    img {
+        transform: scale(1.2);
+        transition: all 0.3s ease-out;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    i {
+        display: inline-block;
+        vertical-align: middle;
+        transition: all 0.2s ease-in;
+        position: relative;
+        z-index: 9;
+        margin-top: -30px;
+        cursor: pointer;
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+        animation-delay: .1s;
+        animation-fill-mode: both;
+    }
+    .nameBg {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 7;
+        display: block;
+        width: 100%;
+        height: 30px;
+        background: url(http://pic.c-ctrip.com/fltinternational100913/hot_theme/blackalpha40.png);
+        background: rgba(0, 0, 0, 0.4);
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+    }
+    .name {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 8;
+        display: block;
+        width: 100%;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+    }
+}
+.topicItem {
+    display: table-cell;
+    width: 110px;
+    height: 128px;
+    background-color: #51a2fe;
+    color: #fff;
+    vertical-align: middle;
     text-align: center;
 }
+
+@media screen and (max-width: 1250px) {
+    .mainWrap {
+        width: 980px;
+    }
+    .main {
+        width: 580px;
+    }
+    .topicItem {
+        border-left-width: 7px;
+    }
+}
+
+
+
+// ---------
+.slideItem {
+    text-align: center;
+    font-size: 40px;
+    color: #333;
+    line-height: 1.5;
+
+    height: 300px;
+}
+
+
+
