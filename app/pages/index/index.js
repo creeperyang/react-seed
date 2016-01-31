@@ -20,7 +20,8 @@ class IndexPage extends Component {
                 },
                 map: {
                     link: 'http://events.flights.ctrip.com/intlflight/youyoudongnanya.html#ctm_ref=fli_hp_pref_def_i_1',
-
+                    title: '全世界机票 全信赖携程',
+                    subTitle: '国际机票超值优惠'
                 }
             },
             toolbox: {
@@ -86,9 +87,11 @@ class IndexPage extends Component {
             <div>
                 <div className={styles.topWrap}>
                     <Slider speed={400} autoplay={false}>
-                        <div className={styles.slideItem}>Slide1</div>
-                        <div className={styles.slideItem}>Slide2</div>
-                        <div ref="indicator" className={styles.slideItem}>Slide3</div>
+                        {
+                            this.state.images.map((image, index) => {
+                                return <img key={index} className={styles.image} src={image} />
+                            })
+                        }
                     </Slider>
                 </div>
                 <div className={styles.mainWrap}>
@@ -100,10 +103,10 @@ class IndexPage extends Component {
                                 </a>
                             </li>
                             <li className={styles.serviceMap}>
-                                <a href={this.state.service.map.link} target="_blank">
-                                    <b></b>
-                                    <strong>全世界机票 全信赖携程</strong>
-                                    <br/>国际机票超值优惠
+                                <a href={this.state.service.map.link} className={styles.bgIcon} target="_blank">
+                                    <b className={styles.bgIcon}></b>
+                                    <strong>{this.state.service.map.title}</strong>
+                                    <br/>{this.state.service.map.subTitle}
                                 </a>
                             </li>
                         </ul>

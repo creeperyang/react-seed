@@ -15,6 +15,7 @@ const sassParams = [
     'includePaths[]=' + APP_PATH,
     'includePaths[]=' + NODE_MODULES_PATH
 ];
+
 if (DEBUG) {
     sassParams.push('sourceMap', 'sourceMapContents=true');
     sassLoader = [
@@ -40,25 +41,31 @@ if (DEBUG) {
     ].join('!'));
 }
 
+// special sass loader, disable css module
+const specialSassLoader = sassLoader.replace(/!css-loader[^!]+!/, '!css-loader?sourceMap&-modules!'); 
+
 /// ----js loader---
 jsLoader = ['babel?presets[]=react,presets[]=es2015,presets[]=stage-0'].join('!');
 
 /// ----file loader----
 imgLoader = [`url-loader?name=${BUILD_IMAGE_DIR + '/'}[name].[ext]&limit=1024`].join('!');
 
-const loaders = [
-        {
+const loaders = [{
+            test: /app\/styles\/\S+\.scss$/,
+            loader: specialSassLoader
+        }, {
             test: /\.css$/,
             loader: cssLoader,
             include: APP_PATH
+        }, {
+            test: /\.scss$/,
+            exclude: /app\/styles\/\S+\.scss$/,
+            loader: sassLoader
         }, {
             test: /\.jsx?$/,
             loader: jsLoader,
             include: APP_PATH,
             exclude: /(node_modules|bower_components)/
-        }, {
-            test: /\.scss$/,
-            loader: sassLoader
         }, {
             test: /\.woff$/, 
             loader: `url?name=${BUILD_RES_DIR + '/'}[name].[ext]&limit=10000&mimetype=application/font-woff`

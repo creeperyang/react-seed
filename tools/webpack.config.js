@@ -11,6 +11,9 @@ const config = {
     },
     output: {
         path: BUILD_PATH,
+        // workround for load image correctly in browser.
+        // see <https://github.com/webpack/style-loader/issues/55> for detail
+        publicPath: `http://${HOST}:${PORT}/`,
         filename: `${BUILD_SCRIPT_DIR ? BUILD_SCRIPT_DIR : '.'}/[name].[hash:5].js`,
         chunkFilename: `${BUILD_SCRIPT_DIR ? BUILD_SCRIPT_DIR : '.'}script/[id].bundle.js`
     },
@@ -18,9 +21,9 @@ const config = {
     plugins: plugins,
     target: 'web',
     module: {
-        preLoaders: [
+        /*preLoaders: [
             {test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/}
-        ],
+        ],*/
         loaders: loaders
     },
     postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
