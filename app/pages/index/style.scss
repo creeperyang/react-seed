@@ -117,17 +117,29 @@
     }
     .order {
         background-position: 1px -255px;
+        &:hover {
+           background: url(http://pic.c-ctrip.com/fltinternational100913/tool_order.gif) 0 0;
+        }
     }
     .checkin {
         background-position: -189px -255px;
+        &:hover {
+            background: url(http://pic.c-ctrip.com/fltinternational100913/tool_checkin.gif) 0 0;
+        }
     }
     .refund {
         background-position: -480px -255px;
+        &:hover {
+            background: url(http://pic.c-ctrip.com/fltinternational100913/tool_refound.gif) 0 0;
+        }
     }
     .strategy {
         width: 93px;
         border: 0 none;
         background-position: -378px -255px;
+        &:hover {
+            background: url(http://pic.c-ctrip.com/fltinternational100913/tool_strategy.gif) 0 0;
+        }
     }
 }
 

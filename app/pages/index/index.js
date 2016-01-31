@@ -116,7 +116,7 @@ class IndexPage extends Component {
                             <div className={styles.tools}>
                                 {
                                     this.state.toolbox.tools.map((tool, index) => (
-                                        <a key={index} target="_blank" href={tool.link} className={tool.className}></a>
+                                        <a key={index} target="_blank" href={tool.link} className={tool.className + ' ' + styles.bgIcon}></a>
                                     ))
                                 }
                             </div>
