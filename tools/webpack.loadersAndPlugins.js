@@ -44,9 +44,6 @@ if (DEBUG) {
 // special sass loader, disable css module
 const specialSassLoader = sassLoader.replace(/!css-loader[^!]+!/, '!css-loader?sourceMap&-modules!'); 
 
-/// ----js loader---
-//jsLoader = ['babel?presets[]=react,presets[]=es2015,presets[]=stage-0'].join('!');
-
 /// ----file loader----
 imgLoader = [`url-loader?name=${BUILD_IMAGE_DIR + '/'}[name].[ext]&limit=1024`].join('!');
 
@@ -68,7 +65,7 @@ const loaders = [{
             exclude: /(node_modules|bower_components)/,
             query: {
                 presets: ['react', 'es2015', 'stage-0'],
-                plugins: [['react-transform', {
+                plugins: DEBUG ? [['react-transform', {
                     transforms: [{
                         transform: 'react-transform-hmr',
                         imports: ['react'],
@@ -77,7 +74,7 @@ const loaders = [{
                         transform: 'react-transform-catch-errors',
                         imports: ['react', 'redbox-react']
                     }]
-                }]],
+                }]] : [],
                 babelrc: false
             }
         }, {
@@ -108,7 +105,6 @@ const loaders = [{
 // extracted css file name
 const cssBundle = join(BUILD_STYLE_DIR, '[name].[hash:5].css');
 const plugins = [
-        new webpack.optimize.UglifyJsPlugin({minimize: true}),
         new webpack.optimize.CommonsChunkPlugin('vendors', join(BUILD_SCRIPT_DIR, 'vendors.js')),
         new HtmlwebpackPlugin({
             title: HTML_SETTING.title,
@@ -123,5 +119,8 @@ const plugins = [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ];
+if (!DEBUG) {
+    plugins.unshift(new webpack.optimize.UglifyJsPlugin({ minimize: true }));
+}
 
 export { loaders, plugins };
