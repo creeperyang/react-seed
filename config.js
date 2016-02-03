@@ -19,5 +19,12 @@ const BUILD_STYLE_DIR = 'styles';
 const BUILD_IMAGE_DIR = 'images';
 const BUILD_RES_DIR = 'res';
 
+/// spa page setting, like title, template
+const HTML_SETTING = {
+    title: 'React App',
+    filename: 'index.html',
+    template: resolve(APP_PATH, 'index.html')
+};
 
-export { DEBUG, HOST, PORT, APP_PATH, BUILD_PATH, BUILD_SCRIPT_DIR, BUILD_IMAGE_DIR, BUILD_STYLE_DIR, BUILD_RES_DIR };
+
+export { DEBUG, HOST, PORT, APP_PATH, BUILD_PATH, BUILD_SCRIPT_DIR, BUILD_IMAGE_DIR, BUILD_STYLE_DIR, BUILD_RES_DIR, HTML_SETTING };
