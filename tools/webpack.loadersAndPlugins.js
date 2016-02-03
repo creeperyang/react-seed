@@ -45,7 +45,7 @@ if (DEBUG) {
 const specialSassLoader = sassLoader.replace(/!css-loader[^!]+!/, '!css-loader?sourceMap&-modules!'); 
 
 /// ----js loader---
-jsLoader = ['babel?presets[]=react,presets[]=es2015,presets[]=stage-0'].join('!');
+//jsLoader = ['babel?presets[]=react,presets[]=es2015,presets[]=stage-0'].join('!');
 
 /// ----file loader----
 imgLoader = [`url-loader?name=${BUILD_IMAGE_DIR + '/'}[name].[ext]&limit=1024`].join('!');
@@ -63,9 +63,20 @@ const loaders = [{
             loader: sassLoader
         }, {
             test: /\.jsx?$/,
-            loader: jsLoader,
+            loader: ['babel'],
             include: APP_PATH,
-            exclude: /(node_modules|bower_components)/
+            exclude: /(node_modules|bower_components)/,
+            query: {
+                presets: ['react', 'es2015', 'stage-0'],
+                plugins: [['react-transform', {
+                    transforms: [{
+                        transform: 'react-transform-hmr',
+                        imports: ['react'],
+                        locals: ['module']
+                    }]
+                }]],
+                babelrc: false
+            }
         }, {
             test: /\.woff$/, 
             loader: `url?name=${BUILD_RES_DIR + '/'}[name].[ext]&limit=10000&mimetype=application/font-woff`

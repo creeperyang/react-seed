@@ -29,6 +29,7 @@ const config = {
     postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
     devServer: {
         contentBase: BUILD_PATH,
+        historyApiFallback: true,
         hot: true,
         noInfo: false,
         inline: true,

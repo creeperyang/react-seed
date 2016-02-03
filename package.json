@@ -4,10 +4,10 @@
   "description": "Seed project for React.js apps",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "babel-node --eval \"require('./tools/clean').default().catch(err => console.log(err.stack))\"",
+    "clean": "babel-node --presets es2015,stage-0 --eval \"require('./tools/clean').default().catch(err => console.log(err.stack))\"",
     "prebuild": "npm run clean",
-    "build": "babel-node --eval \"require('./tools/build').default().catch(err => console.log(err.stack))\"",
-    "serve": "NODE_ENV=development babel-node --eval \"require('./tools/dev-server')\"",
+    "build": "babel-node --presets es2015,stage-0 --eval \"require('./tools/build').default().catch(err => console.log(err.stack))\"",
+    "serve": "NODE_ENV=development babel-node --presets es2015,stage-0 --eval \"require('./tools/dev-server')\"",
     "start": "npm run clean && npm run serve"
   },
   "repository": {
@@ -51,12 +51,12 @@
     "node-sass": "^3.4.2",
     "opn": "^3.0.3",
     "postcss-loader": "^0.8.0",
+    "react-transform-hmr": "^1.0.2",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
-    "webpack": "^1.12.10",
-    "webpack-dev-server": "^1.14.0",
-    "webpack-hot-middleware": "^2.6.0"
+    "webpack": "^1.12.12",
+    "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
     "history": "^1.17.0",
