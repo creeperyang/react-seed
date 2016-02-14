@@ -18,13 +18,10 @@ const config = {
         chunkFilename: `${BUILD_SCRIPT_DIR ? BUILD_SCRIPT_DIR : '.'}script/[id].bundle.js`
     },
     devtool: DEBUG ? 'eval-source-map' : false,
-    plugins: plugins,
+    plugins,
     target: 'web',
     module: {
-        /*preLoaders: [
-            {test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/}
-        ],*/
-        loaders: loaders
+        loaders
     },
     postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
     devServer: {
