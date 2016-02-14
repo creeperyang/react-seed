@@ -9,7 +9,7 @@
     "build": "babel-node --presets es2015,stage-0 --eval \"require('./tools/build').default().catch(err => console.log(err.stack))\"",
     "serve": "NODE_ENV=development babel-node --presets es2015,stage-0 --eval \"require('./tools/dev-server')\"",
     "start": "npm run clean && npm run serve",
-    "lint": "node_modules/.bin/eslint tools"
+    "lint": "node_modules/.bin/eslint tools app"
   },
   "repository": {
     "type": "git",

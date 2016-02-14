@@ -89,7 +89,7 @@ class IndexPage extends Component {
                     <Slider speed={400} autoplay={false}>
                         {
                             this.state.images.map((image, index) => {
-                                return <img key={index} className={styles.image} src={image} />
+                                return <img key={index} className={styles.image} src={image} />;
                             })
                         }
                     </Slider>
